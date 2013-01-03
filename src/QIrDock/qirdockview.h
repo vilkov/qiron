@@ -43,7 +43,7 @@ class QIrStyleOptionDocklet;
 class QIRONSHARED_EXPORT QIrDockView : public QGraphicsView, public QIrWidget
 {
 	Q_OBJECT
-	QIR_DECLARE_UI(QIrDockView);
+	QIR_DECLARE_UI(QIrDockView)
 	friend class QIrDock;
 	friend class QIrDockBundle;
 
@@ -91,7 +91,7 @@ protected:
 	void mouseReleaseEvent( QMouseEvent * );
 	void resizeEvent( QResizeEvent * );
 
-	void QIrDockView::deferPosEvaluation( int delay );
+	void deferPosEvaluation( int delay );
 
 protected slots:
 	void slotHandleMaximumIconSizeChanged( int );

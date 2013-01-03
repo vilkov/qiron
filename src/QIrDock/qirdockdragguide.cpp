@@ -35,7 +35,7 @@ QIR_BEGIN_NAMESPACE
 
 class QIrDockDragGuideUi : public QIrWidgetUi
 {
-	QIR_DECLARE_WIDGET(QIrDockDragGuide);
+	QIR_DECLARE_WIDGET(QIrDockDragGuide)
 
 public:
         QIrDockDragGuideUi() : currentRegion(QIrDockDragGuide::IR_None),
@@ -250,7 +250,7 @@ void QIrDockDragGuide::handleAnimationFinished()
 }
 QString QIrDockDragGuide::widgetGroupKey() const 
 {
-	return qiron_dock_drag_elements;
+	return QLatin1String(qiron_dock_drag_elements);
 }
 void QIrDockDragGuide::initStyleOption( QIrStyleOptionDockDragGuide * option ) const
 {
@@ -441,7 +441,7 @@ void QIrDockDragGuideManager::deploy()
 	QRect startGeom, endGeom, r;
 	QWidget * managed = dockManager()->managed();
 
-	try {
+	QT_TRY {
 
 	if ( !managed )
 		return;
@@ -456,7 +456,7 @@ void QIrDockDragGuideManager::deploy()
 		guide->setAnimationGeometry(startGeom,endGeom);
 		guide->deploy();
 	}
-	} catch(...) {
+	} QT_CATCH(...) {
 	}
 }
 void QIrDockDragGuideManager::undeploy()

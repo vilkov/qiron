@@ -81,7 +81,7 @@ public:
 	bool isExpanded() const;
 	void setExpanded( bool );
 
-	inline QString widgetGroupKey() const { return qir_expander_group_key; }
+	inline QString widgetGroupKey() const { return QLatin1String(qir_expander_group_key); }
 	
 protected:
 	QIrSubStyle * defaultSubStyle() const;

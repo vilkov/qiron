@@ -29,10 +29,10 @@
 #include <QPainter>
 #include <QGraphicsScene>
 #include <QMessageBox>
-#include "QIrDockEffectManager.h"
+#include <QIrDockEffectManager>
 #include "qirdocklet.h"
 #include "qirdockletbundle.h"
-#include "QIrDockview.h"
+#include "qirdockview.h"
 #include "ui/qirdock_ui.h"
 #include "qirdockstyle.h"
 #include "qirdockmanager.h"
@@ -824,6 +824,10 @@ QRect QIrDock::visualRect( QIrDocklet * docklet ) const
 
 	return ret;
 }
+QString QIrDock::widgetGroupKey() const
+{
+    return QLatin1String("qiron_dock");
+}
 void QIrDock::slotHandleMenuAboutToShow()
 {
 	QIR_UI(QIrDock);
@@ -996,7 +1000,7 @@ void QIrDock::slotChangeAlignment()
 }
 void QIrDock::slotDockSettings()
 {
-	QMessageBox::information(0,"Dock Settings","Not available yet. Soon!!!");
+	QMessageBox::information(0,tr("Dock Settings"),tr("Not available yet. Soon!!!"));
 }
 void QIrDock::slotRemoveEntry()
 {
@@ -1008,7 +1012,7 @@ void QIrDock::slotRemoveEntry()
 }
 void QIrDock::slotEntryProperty()
 {
-	QMessageBox::information(0,"Entry Property","Not available yet. Soon!!!");
+	QMessageBox::information(0,tr("Entry Property"),tr("Not available yet. Soon!!!"));
 }
 
 QIR_END_NAMESPACE

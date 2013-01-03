@@ -24,7 +24,7 @@
 #include <QAction>
 #include <QMenu>
 #include <QDir>
-#include <QDirModel.h>
+#include <QDirModel>
 #include <QModelIndex>
 #include <QLibrary>
 #include <QFileIconProvider>
@@ -294,7 +294,7 @@ QMenu * QIrBreadCrumbDirModel::buildMenu(const QIrBreadCrumbModelNode & node)
 		if ( !index.isValid() )
 			return 0;
 		if ( !m_menuManager->isRegisteredPath(node.path()) )
-			m_menuManager->registerPath(qPrintable(node.path()));
+			m_menuManager->registerPath(node.path());
 		QIrBreadCrumbDirModelMenu * menu = m_menuManager->menu(node.path());
 		
 		menu->setFilter(filter());

@@ -42,7 +42,7 @@ QIR_BEGIN_NAMESPACE
 
 class QIrBreadCrumbBarStylePrivate : public QIrObjectPrivate
 {
-	QIR_DECLARE_OBJECT(QIrBreadCrumbBarStyle);
+	QIR_DECLARE_OBJECT(QIrBreadCrumbBarStyle)
 
 public:
 	QIrBreadCrumbBarStylePrivate();
@@ -51,7 +51,7 @@ public:
 
 class QIrDefaultBreadCrumbBarStylePrivate : public QIrBreadCrumbBarStylePrivate
 {
-	QIR_DECLARE_OBJECT(QIrDefaultBreadCrumbBarStyle);
+	QIR_DECLARE_OBJECT(QIrDefaultBreadCrumbBarStyle)
 
 public:
 	QIrDefaultBreadCrumbBarStylePrivate();
@@ -60,7 +60,7 @@ public:
 
 class QIrStyledBreadCrumbBarStylePrivate : public QIrDefaultBreadCrumbBarStylePrivate
 {
-	QIR_DECLARE_OBJECT(QIrStyledBreadCrumbBarStyle);
+	QIR_DECLARE_OBJECT(QIrStyledBreadCrumbBarStyle)
 
 public:
 	QIrStyledBreadCrumbBarStylePrivate();

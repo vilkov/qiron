@@ -374,7 +374,7 @@ QIrExpander::QIrExpander(QWidget * parent, HeaderPosition position)
 	
 	ui->setupUi();
 	setHeaderPosition(position);
-	setTitle("Expander");
+	setTitle(tr("Expander"));
 	ui->polish();
 }
 QIrExpander::QIrExpander(const QString & title, QWidget * parent, HeaderPosition position) 
@@ -385,7 +385,7 @@ QIrExpander::QIrExpander(const QString & title, QWidget * parent, HeaderPosition
 	ui->setupUi();
 	setHeaderPosition(position);
 	if ( title.isEmpty() )
-		setTitle("Expander");
+		setTitle(tr("Expander"));
 	else
 		setTitle(title);
 	ui->polish();
@@ -399,7 +399,7 @@ QIrExpander::QIrExpander(const QIcon & icon, const QString & title, QWidget * pa
 	setHeaderPosition(position);
 	setIcon(icon);
 	if ( title.isEmpty() )
-		setTitle("Expander");
+		setTitle(tr("Expander"));
 	else
 		setTitle(title);
 	ui->polish();
@@ -420,10 +420,9 @@ void QIrExpander::setWidget( QWidget * w )
 
 	if ( ui->widget == w  )
 		return;
-	if ( ui->widget && w ) {
-		qWarning(qPrintable(tr("QIrExpander::setWidget(): The expander already has a widget.")));
+	if ( ui->widget && w )
 		return;
-	}
+
 	if ( ui->widget ) {
 		ui->widget->removeEventFilter(this);
 		ui->widget->hide();

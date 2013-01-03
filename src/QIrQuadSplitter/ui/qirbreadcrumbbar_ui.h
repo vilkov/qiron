@@ -25,8 +25,9 @@
 #define QIRBREADCRUMBBAR_UI_H
 
 #include <QComboBox>
-#include "qirabstractbreadcrumbmodel.h"
-#include "qirbreadcrumbbar.h"
+#include "../../Common/ui/qirwidget_ui.h"
+#include "../../QIrBreadCrumbBar/qirabstractbreadcrumbmodel.h"
+#include "../../QIrBreadCrumbBar/qirbreadcrumbbar.h"
 
 class QAction;
 class QIrBreadCrumbBarStyle;
@@ -41,6 +42,8 @@ public:
     enum Type {EmptyArea,Indicator,Label};
 
     QIrBreadCrumbItem(QIrBreadCrumbComboBoxContainer *, QIrBreadCrumbItem::Type);
+    virtual ~QIrBreadCrumbItem()
+    {}
 
     inline QRect rect() const { return m_rect; }
     inline void setRect( const QRect & rect ) { m_rect = rect; }
@@ -212,7 +215,7 @@ private:
 
 class QIrBreadCrumbBarUi : public QIrWidgetUi
 {
-    QIR_DECLARE_WIDGET(QIrBreadCrumbBar);
+    QIR_DECLARE_WIDGET(QIrBreadCrumbBar)
 
 public:
     QIrBreadCrumbBarUi();

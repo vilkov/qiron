@@ -43,7 +43,7 @@ class QIRONSHARED_EXPORT QIrWidget
 
 public:
 	QIrWidget();
-        virtual ~QIrWidget();
+	virtual ~QIrWidget();
 
 	static QIrWidgetList allWidgets( const QString & widgetGroupKey = QString() );
 
@@ -58,7 +58,7 @@ public:
 	virtual QWidget * toWidget() = 0;
 	virtual const QWidget * toWidget() const = 0;
 
-	inline virtual QString widgetGroupKey() const { return "qiron_widget"; }
+	virtual QString widgetGroupKey() const;
 
 protected:
 	QIrWidget( QIrWidgetUi & ui );

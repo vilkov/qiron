@@ -25,6 +25,8 @@
 #include <QPainter>
 #include <QLinearGradient>
 #include <QtDebug>
+#include <QObject>
+#include <QGraphicsEffect>
 #include "qirdocklet.h"
 #include "qirgraphicsmirroreffect.h"
 #include "private/qpixmapfilter_p.h"
@@ -189,7 +191,7 @@ QIcon QIrDockStyle::standardIconImplementation(QStyle::StandardPixmap standardIc
 {
 	switch ( standardIcon ) {
 		case QIrDockStyle::SP_UnknownDocklet:
-			return QIcon(":/qiron/styles/images/unknown_docklet.png");
+			return QIcon(QLatin1String(":/qiron/styles/images/unknown_docklet.png"));
 		default:
 			break;
 	}
@@ -500,7 +502,7 @@ int QIrDefaultDockStyle::styleHint(QStyle::StyleHint hint, const QStyleOption * 
 			if ( QStyleHintReturnVariant * ret = qstyleoption_cast< QStyleHintReturnVariant * >(returnData) ) {
 				QFont font;
 
-				font.setFamily("helvetica");
+				font.setFamily(QLatin1String("helvetica"));
 				font.setPointSize(16);
 				font.setBold(true);				
 				ret->variant = font;
@@ -537,12 +539,13 @@ void QIrDefaultDockStyle::unpolish( QWidget * widget )
 }
 void QIrDefaultDockStyle::setEffects( QIrDockletBundle * bundle )
 {
-	QIrDocklet * docklet = bundle->docklet();
-	QGraphicsGrayscaleEffect * effect = new QGraphicsGrayscaleEffect(docklet);
-	
-	docklet->setGraphicsEffect(effect);
-	effect->setEnabled(false);
-	bundle->invalidate();
+    /* FIXME(vilkov) */
+//	QIrDocklet * docklet = bundle->docklet();
+//	QGraphicsGrayscaleEffect * effect = new QGraphicsGrayscaleEffect(docklet);
+//
+//	docklet->setGraphicsEffect(effect);
+//	effect->setEnabled(false);
+//	bundle->invalidate();
 }
 void QIrDefaultDockStyle::unsetEffects( QIrDockletBundle * bundle )
 {
@@ -574,25 +577,27 @@ void QIrDefaultDockStyle::handleBundleLeftImpl()
 }
 void QIrDefaultDockStyle::handleBundleMousePressedImpl()
 {
-	QIrDockletBundle * bundle = qobject_cast< QIrDockletBundle * >(sender());
-	
-	if ( bundle ) {
-		QGraphicsGrayscaleEffect * effect = qobject_cast<QGraphicsGrayscaleEffect * >(bundle->docklet()->graphicsEffect());
-
-		if ( effect )
-			effect->setEnabled(true);
-	}
+    /* FIXME(vilkov) */
+//	QIrDockletBundle * bundle = qobject_cast< QIrDockletBundle * >(sender());
+//
+//	if ( bundle ) {
+//		QGraphicsGrayscaleEffect * effect = qobject_cast<QGraphicsGrayscaleEffect * >(bundle->docklet()->graphicsEffect());
+//
+//		if ( effect )
+//			effect->setEnabled(true);
+//	}
 }
 void QIrDefaultDockStyle::handleBundleMouseReleasedImpl()
 {
-	QIrDockletBundle * bundle = qobject_cast< QIrDockletBundle * >(sender());
-
-	if ( bundle ) {
-		QGraphicsGrayscaleEffect * effect = qobject_cast<QGraphicsGrayscaleEffect * >(bundle->docklet()->graphicsEffect());
-
-		if ( effect )
-			effect->setEnabled(false);
-	}
+    /* FIXME(vilkov) */
+//	QIrDockletBundle * bundle = qobject_cast< QIrDockletBundle * >(sender());
+//
+//	if ( bundle ) {
+//		QGraphicsGrayscaleEffect * effect = qobject_cast<QGraphicsGrayscaleEffect * >(bundle->docklet()->graphicsEffect());
+//
+//		if ( effect )
+//			effect->setEnabled(false);
+//	}
 }
 void QIrDefaultDockStyle::handleDockAreaChangedImpl()
 {
@@ -975,7 +980,7 @@ int QIrStyledDockStyle::styleHint(QStyle::StyleHint hint, const QStyleOption * o
 			if ( QStyleHintReturnVariant * ret = qstyleoption_cast< QStyleHintReturnVariant * >(returnData) ) {
 				QFont font;
 
-				font.setFamily("arial");
+				font.setFamily(QLatin1String("arial"));
 				font.setPointSize(10);
 				font.setBold(true);				
 				ret->variant = font;

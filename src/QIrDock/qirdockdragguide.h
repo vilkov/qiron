@@ -110,7 +110,7 @@ class QIrDockDragGuideManager : public QObject, public QIrObject
 {
 	Q_OBJECT
 	QIR_DECLARE_PRIVATE(QIrDockDragGuideManager)
-	Q_PROPERTY(bool useAnimation READ useAnimation WRITE setUseAnimation);
+	Q_PROPERTY(bool useAnimation READ useAnimation WRITE setUseAnimation)
 
 public:
 	QIrDockDragGuideManager( QIrDockManager * manager );

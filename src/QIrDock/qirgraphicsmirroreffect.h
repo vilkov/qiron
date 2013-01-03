@@ -72,7 +72,7 @@ public:
 	void setOpacity( qreal o );
 
 protected:
-	void draw(QPainter * painter, QGraphicsEffectSource * source);
+	virtual void draw(QPainter * painter);
 
 signals:
 	void opacityChanged( qreal );

@@ -79,4 +79,9 @@ QIrObjectList QIrObject::allObjects( const QString & objectGroupKey )
 	return list;
 }
 
+QString QIrObject::objectGroupKey() const
+{
+    return QLatin1String("qiron_object");
+}
+
 QIR_END_NAMESPACE

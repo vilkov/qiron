@@ -37,12 +37,12 @@ class QIRONSHARED_EXPORT QIrQuadSplitter : public QFrame, public QIrWidget
 {
 	Q_OBJECT
 	QIR_DECLARE_UI(QIrQuadSplitter)
-	Q_PROPERTY(int handleWidth READ handleWidth WRITE setHandleWidth DESIGNABLE true);
-	Q_PROPERTY(bool opaqueResize READ opaqueResize WRITE setOpaqueResize DESIGNABLE true);
-	Q_PROPERTY(bool keepRatios READ keepRatios WRITE setKeepRatios DESIGNABLE true);
-	Q_PROPERTY(double verticalRatio READ verticalRatio WRITE setVerticalRatio DESIGNABLE true);
-	Q_PROPERTY(double horizontalRatio READ horizontalRatio WRITE setHorizontalRatio DESIGNABLE true);
-	Q_PROPERTY(int count READ count);
+	Q_PROPERTY(int handleWidth READ handleWidth WRITE setHandleWidth DESIGNABLE true)
+	Q_PROPERTY(bool opaqueResize READ opaqueResize WRITE setOpaqueResize DESIGNABLE true)
+	Q_PROPERTY(bool keepRatios READ keepRatios WRITE setKeepRatios DESIGNABLE true)
+	Q_PROPERTY(double verticalRatio READ verticalRatio WRITE setVerticalRatio DESIGNABLE true)
+	Q_PROPERTY(double horizontalRatio READ horizontalRatio WRITE setHorizontalRatio DESIGNABLE true)
+	Q_PROPERTY(int count READ count)
 	friend class QIrQuadSplitterLayoutStruct;	
 	friend class QIrQuadSplitterLayout;
 

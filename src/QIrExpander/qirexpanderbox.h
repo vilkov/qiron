@@ -84,7 +84,7 @@ public:
 	QList< int > sizes() const;
 	void setSizes( const QList< int > & );
 
-	QString widgetGroupKey() const { return "qiron_groubBox"; }
+	QString widgetGroupKey() const { return QLatin1String("qiron_groubBox"); }
 
 protected:
 	void childEvent( QChildEvent * );

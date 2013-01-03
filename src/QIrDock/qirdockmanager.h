@@ -36,7 +36,7 @@ class QIrDockManagerPrivate;
 class QIRONSHARED_EXPORT QIrDockManager : public QObject, public QIrObject
 {
 	Q_OBJECT
-	QIR_DECLARE_PRIVATE(QIrDockManager);
+	QIR_DECLARE_PRIVATE(QIrDockManager)
 	Q_PROPERTY(int animatedOffset READ animatedOffset WRITE setAnimatedOffset DESIGNABLE false)
 	friend class QIrAbstractDock;
 	Q_DISABLE_COPY(QIrDockManager)

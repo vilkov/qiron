@@ -32,14 +32,15 @@ static QPixmap pixmapForRegion( int region )
 	static QList< QPixmap > list;
 	
 	if ( list.empty() )
-		list << QPixmap(":/qiron/styles/images/shadow_topleft.png")
-		<< QPixmap(":/qiron/styles/images/shadow_left.png")
-		<< QPixmap(":/qiron/styles/images/shadow_bottomleft.png")
-		<< QPixmap(":/qiron/styles/images/shadow_bottom.png")
-		<< QPixmap(":/qiron/styles/images/shadow_bottomright.png")
-		<< QPixmap(":/qiron/styles/images/shadow_right.png")
-		<< QPixmap(":/qiron/styles/images/shadow_topright.png")
-		<< QPixmap(":/qiron/styles/images/shadow_top.png");
+		list
+		<< QPixmap(QLatin1String(":/qiron/styles/images/shadow_topleft.png"))
+		<< QPixmap(QLatin1String(":/qiron/styles/images/shadow_left.png"))
+		<< QPixmap(QLatin1String(":/qiron/styles/images/shadow_bottomleft.png"))
+		<< QPixmap(QLatin1String(":/qiron/styles/images/shadow_bottom.png"))
+		<< QPixmap(QLatin1String(":/qiron/styles/images/shadow_bottomright.png"))
+		<< QPixmap(QLatin1String(":/qiron/styles/images/shadow_right.png"))
+		<< QPixmap(QLatin1String(":/qiron/styles/images/shadow_topright.png"))
+		<< QPixmap(QLatin1String(":/qiron/styles/images/shadow_top.png"));
 	return list[region];
 }
 

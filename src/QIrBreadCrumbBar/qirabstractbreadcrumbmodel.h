@@ -24,8 +24,8 @@
 #ifndef QIRABSTRACTBREADCRUMBMODEL_H
 #define QIRABSTRACTBREADCRUMBMODEL_H
 
-#include "../Common/qiron_export.h"
 #include <QString>
+#include "../Common/qiron_export.h"
 
 class QAbstractItemModel;
 class QIcon;

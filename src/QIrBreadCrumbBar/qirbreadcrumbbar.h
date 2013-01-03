@@ -62,7 +62,7 @@ public:
 	QIrAbstractBreadCrumbModel * model() const;
 	void setModel( QIrAbstractBreadCrumbModel * );
 
-	inline QString widgetGroupKey() const { return "qiron_breadcrumbbar"; }
+	virtual QString widgetGroupKey() const;
 	
 	void refresh();
 

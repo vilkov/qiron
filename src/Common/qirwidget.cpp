@@ -247,6 +247,10 @@ void QIrWidget::setSubStyle(QIrWidget * w, QIrSubStyle * style)
 		}
 	}
 }
+QString QIrWidget::widgetGroupKey() const
+{
+    return QLatin1String("qiron_widget");
+}
 void QIrWidget::subStyleChanged()
 {
 }

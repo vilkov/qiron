@@ -101,7 +101,7 @@ private:
 
 class QIrExpanderUi : public QIrWidgetUi
 {
-	QIR_DECLARE_WIDGET(QIrExpander);
+	QIR_DECLARE_WIDGET(QIrExpander)
 	
 public:
 	QIrExpanderUi() : icon(QIcon()), title(QString::null), widget(0), 

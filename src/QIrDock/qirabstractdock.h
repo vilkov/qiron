@@ -115,8 +115,8 @@ public:
 		DP_Maximum, 
 		DP_Preferred
 	};
-	Q_DECLARE_FLAGS(DockAreas,DockArea);
-	Q_DECLARE_FLAGS(DockAlignments,DockAlignment);
+	Q_DECLARE_FLAGS(DockAreas,DockArea)
+	Q_DECLARE_FLAGS(DockAlignments,DockAlignment)
 
 	//Contructor and Destructor
 	explicit QIrAbstractDock(QWidget * parent = 0, DockArea area = DA_BottomDockArea, DockAlignment alignment = DAL_DockAlignCenter);

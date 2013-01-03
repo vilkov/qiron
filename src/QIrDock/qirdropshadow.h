@@ -64,7 +64,7 @@ public:
 		RightEdge = 8,
 		All = 15
 	};
-	Q_DECLARE_FLAGS(DropShadowEdges,DropShadowEdge);
+	Q_DECLARE_FLAGS(DropShadowEdges,DropShadowEdge)
 	
 	explicit QIrDropShadow(const QRect & rect = QRect());
 	~QIrDropShadow() { };

@@ -32,8 +32,8 @@
 #include "qirdockstyle.h"
 #include "qirdocklet.h"
 #include "qirdockletbundle.h"
-#include "QIrDock.h"
-#include "ui/QIrDockview_ui.h"
+#include "qirdock.h"
+#include "ui/qirdockview_ui.h"
 #include "../Common/qirboolblocker.h"
 
 QIR_BEGIN_NAMESPACE
@@ -57,7 +57,7 @@ void QIrDockViewUi::init()
 	w->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	w->setEffectManager(new QIrDefaultEffectManager(w));//QIrParabolicEffectManager(w));
 	w->setFrameShape(QFrame::NoFrame);
-	w->setStyleSheet("background: transparent");
+	w->setStyleSheet(QLatin1String("background: transparent"));
 	delayTimer = new QTimer(w);
 	delayTimer->setSingleShot(true);
 
@@ -201,7 +201,7 @@ void QIrDockView::setEffectManager( QIrDockEffectManager * manager )
 
 	if ( !manager ) {
 		if ( ui->effectManager ) {
-			if ( ui->effectManager->metaObject()->className() == "QIrDefaultEffectManager" )
+			if ( QLatin1String(ui->effectManager->metaObject()->className()) == QLatin1String("QIrDefaultEffectManager") )
 				return;
 			ui->effectManager->p_func()->setDockView(0);
 			QObject::disconnect(ui->effectManager,SIGNAL(extendRequested()),ui->dock,SLOT(slotHandleExtendRequest()));

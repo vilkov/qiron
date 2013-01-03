@@ -93,7 +93,7 @@ bool QIrAbstractDockUi::adjustDockArea()
 ///////////////////
 //QIrAbstractDock
 //////////////////
-QIrAbstractDock::QIrAbstractDock(QWidget * parent , DockArea area, DockAlignment alignment) : QIrWidget(* new QIrAbstractDockUi), QWidget(parent)
+QIrAbstractDock::QIrAbstractDock(QWidget * parent , DockArea area, DockAlignment alignment) : QWidget(parent), QIrWidget(* new QIrAbstractDockUi)
 {
 	QIR_UI(QIrAbstractDock);
 	
@@ -101,7 +101,7 @@ QIrAbstractDock::QIrAbstractDock(QWidget * parent , DockArea area, DockAlignment
 	ui->alignment = alignment;
 	ui->setupUi();
 }
-QIrAbstractDock::QIrAbstractDock(QWidget * parent, QIrAbstractDockUi & u ) : QIrWidget(u), QWidget(parent)
+QIrAbstractDock::QIrAbstractDock(QWidget * parent, QIrAbstractDockUi & u ) : QWidget(parent), QIrWidget(u)
 {
 	QIR_UI(QIrAbstractDock);
 	

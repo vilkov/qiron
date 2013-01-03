@@ -96,7 +96,7 @@ void QIrBreadCrumbIndicator::clicked( const QPoint & )
     QIrBreadCrumbComboBoxContainer * cont = container();
     QIrBreadCrumbComboBox * comboBox = cont->comboBox();
 	QIrAbstractBreadCrumbModel * model = comboBox->bar()->model();
-	QIrBreadCrumbModelNode node("",QIrBreadCrumbModelNode::Global);
+	QIrBreadCrumbModelNode node(QString(), QIrBreadCrumbModelNode::Global);
 	QMenu * menu;
 
 	menu = model->buildMenu(m_label ? m_label->node() : node);
@@ -147,7 +147,7 @@ void QIrBreadCrumbComboBoxContainer::splitPath( const QString & location )
 void QIrBreadCrumbComboBoxContainer::refresh()
 {
 	QIrAbstractBreadCrumbModel * model = m_comboBox->bar()->model();
-	QIrBreadCrumbModelNode node("",QIrBreadCrumbModelNode::Global);
+	QIrBreadCrumbModelNode node(QString(),QIrBreadCrumbModelNode::Global);
     QIrBreadCrumbLabel * item;
 	QIrBreadCrumbIndicator * indic;
 
@@ -434,9 +434,9 @@ QIrBreadCrumbIconWidget::QIrBreadCrumbIconWidget( QIrBreadCrumbComboBox * comboB
 	QAction * action;
 
     setContextMenuPolicy(Qt::ActionsContextMenu);
-    addAction(action = new QAction("Copy Address",this));
+    addAction(action = new QAction(tr("Copy Address"), this));
     connect(action,SIGNAL(triggered()),this,SLOT(slotCopyAddress()));
-    addAction(action = new QAction("Edit Address",this));
+    addAction(action = new QAction(tr("Edit Address"), this));
     connect(action,SIGNAL(triggered()),this,SLOT(slotEditAddress()));
 }
 void QIrBreadCrumbIconWidget::paintEvent( QPaintEvent * )
@@ -481,7 +481,7 @@ m_flat(false), m_bar(parent), m_clicked(false)
     QPalette pal = palette();
 	QCompleter * c;
 
-	setObjectName("Location Bar");
+	setObjectName(tr("Location Bar"));
 	setDuplicatesEnabled(false);
 	c = new QCompleter(this);
 	setCompleter(c);
@@ -544,9 +544,9 @@ void QIrBreadCrumbComboBox::showBreadCrumbs( bool popupError )
 				QString caption =  qApp->applicationName();
 
 				if ( !caption.isEmpty() )
-					caption += " - ";
+					caption += QLatin1String(" - ");
 				caption += objectName();
-				QMessageBox::critical(this,caption,QString("Location '%1' cannot be found. Check the spelling and try again.").arg(text));
+				QMessageBox::critical(this, caption, tr("Location '%1' cannot be found. Check the spelling and try again.").arg(text));
 				lineEdit()->selectAll();
 				setFocus(Qt::OtherFocusReason);
 			} else
@@ -721,6 +721,10 @@ void QIrBreadCrumbBar::setModel( QIrAbstractBreadCrumbModel * model )
 		}
 		ui->comboBox->container()->refresh();
 	}
+}
+QString QIrBreadCrumbBar::widgetGroupKey() const
+{
+    return QLatin1String("qiron_breadcrumbbar");
 }
 void QIrBreadCrumbBar::refresh()
 {

@@ -52,11 +52,11 @@ bool QIrDirHelper::m_initialized = false;
 
 void QIrDirHelper::init()
 {
+    QMap< SpecialFolder, QString > registerKeys;
 	QString homePath = QDir::homePath(), folder;
 
 	m_specialFolderMap.insert(QIrDirHelper::Home,homePath);
 #if defined(Q_OS_WIN) && !defined(Q_OS_WINCE)	
-	QMap< SpecialFolder, QString > registerKeys;
 	
 	registerKeys.insert(QIrDirHelper::Desktop,"Desktop");
 	registerKeys.insert(QIrDirHelper::Documents,"Personal");
@@ -74,14 +74,14 @@ void QIrDirHelper::init()
 #else 
 	QMap< SpecialFolder, QString > folders;
 	
-	folders.insert(QIrDirHelper::Desktop,homePath + QDir::separator() + "Desktop");
-	folders.insert(QIrDirHelper::Documents,homePath + QDir::separator() + "Documents");
-	folders.insert(QIrDirHelper::Music,homePath + QDir::separator() + "Music");
-	folders.insert(QIrDirHelper::Pictures,homePath + QDir::separator() + "Pictures");
+	folders.insert(QIrDirHelper::Desktop,homePath + QDir::separator() + QLatin1String("Desktop"));
+	folders.insert(QIrDirHelper::Documents,homePath + QDir::separator() + QLatin1String("Documents"));
+	folders.insert(QIrDirHelper::Music,homePath + QDir::separator() + QLatin1String("Music"));
+	folders.insert(QIrDirHelper::Pictures,homePath + QDir::separator() + QLatin1String("Pictures"));
 #if defined(Q_OS_MAC)
-	folders.insert(QIrDirHelper::Video,"Movies");
+	folders.insert(QIrDirHelper::Video,QLatin1String("Movies"));
 #else
-	folders.insert(QIrDirHelper::Video,"Videos");
+	folders.insert(QIrDirHelper::Video,QLatin1String("Videos"));
 
 	foreach (QIrDirHelper::SpecialFolder key, registerKeys.keys()) {
 		QDir dir(registerKeys.value(key));
@@ -119,7 +119,13 @@ QStringList QIrDirHelper::splitPath( const QString & path )
     if (pathCopy[0] == sep[0]) // read the "/" at the beginning as the split removed it
         parts[0] = QDir::fromNativeSeparators(QString(sep[0]));
 #endif
-	parts.removeAll("");
+
+    for (QStringList::size_type i = 0, size = parts.size(); i < size;)
+        if (parts.at(i).isEmpty())
+            parts.removeAt(i);
+        else
+            ++i;
+
     return parts;
 }
 

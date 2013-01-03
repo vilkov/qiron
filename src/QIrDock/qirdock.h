@@ -58,7 +58,7 @@ public:
 		MI_RemoveEntry = 32,
 		MI_AllMenuEntries = MI_AutoHide | MI_DockSettings | MI_DockPosition | MI_LockDragging | MI_EntryProperty | MI_RemoveEntry
 	};
-	Q_DECLARE_FLAGS(DefaultMenuItems,DefaultMenuItem);
+	Q_DECLARE_FLAGS(DefaultMenuItems,DefaultMenuItem)
 
 	explicit QIrDock( QWidget * parent = 0 );
 	~QIrDock();
@@ -99,7 +99,7 @@ public:
 
 	QRect visualRect( QIrDocklet * docklet ) const;
 
-	inline QString widgetGroupKey() const { return "qiron_dock"; }
+	virtual QString widgetGroupKey() const;
 	
 protected:
 	friend class QIrDockletBundle;

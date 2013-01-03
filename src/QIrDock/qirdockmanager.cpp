@@ -50,7 +50,7 @@ QIrDockDragOutline::~QIrDockDragOutline()
 }
 QString QIrDockDragOutline::widgetGroupKey() const 
 {
-	return qiron_dock_drag_elements;
+	return QLatin1String(qiron_dock_drag_elements);
 }
 void QIrDockDragOutline::paintEvent( QPaintEvent * )
 {

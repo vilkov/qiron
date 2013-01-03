@@ -45,7 +45,7 @@ public:
 
 	static QIrObjectList allObjects( const QString & objectGroupKey = QString() );
 
-	inline virtual QString objectGroupKey() const { return "qiron_object"; }
+	virtual QString objectGroupKey() const;
 
 protected:
 	QIrObject( QIrObjectPrivate & p );

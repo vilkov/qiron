@@ -64,7 +64,7 @@ private:
 
 class QIrDockManagerPrivate : public QIrObjectPrivate
 {	
-	QIR_DECLARE_OBJECT(QIrDockManager);
+	QIR_DECLARE_OBJECT(QIrDockManager)
 
 public:
 	QIrDockManagerPrivate();

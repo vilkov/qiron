@@ -230,7 +230,7 @@ private:
 
 class QIrBreadCrumbBarUi : public QIrWidgetUi
 {
-    QIR_DECLARE_WIDGET(QIrBreadCrumbBar);
+    QIR_DECLARE_WIDGET(QIrBreadCrumbBar)
 
 public:
     QIrBreadCrumbBarUi();

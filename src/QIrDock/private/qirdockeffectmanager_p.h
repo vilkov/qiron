@@ -46,7 +46,7 @@ QIR_BEGIN_NAMESPACE
 
 class QIrDockEffectManagerPrivate : public QIrObjectPrivate
 {
-	QIR_DECLARE_OBJECT(QIrDockEffectManager);
+	QIR_DECLARE_OBJECT(QIrDockEffectManager)
 
 public:
 	QIrDockEffectManagerPrivate();
@@ -60,7 +60,7 @@ public:
 
 class QIrDefaultEffectManagerPrivate : public QIrDockEffectManagerPrivate
 {
-	QIR_DECLARE_OBJECT(QIrDefaultEffectManager);
+	QIR_DECLARE_OBJECT(QIrDefaultEffectManager)
 
 public:
 	QIrDefaultEffectManagerPrivate();
