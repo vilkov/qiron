@@ -21,8 +21,6 @@
 ** Library General Public License for more details.
 **
 **********************************************************************/
-/* FIXME(vilkov) */
-//#include <QGraphicsEffectSource>
 #include "../Common/private/qirobject_p.h"
 #include <QPainter>
 #include "qirgraphicsmirroreffect.h"
@@ -145,87 +143,87 @@ QRectF QIrGraphicsMirrorEffect::boundingRectFor( const QRectF & rect ) const
 }
 void QIrGraphicsMirrorEffect::draw(QPainter * painter)
 {
-    /* FIXME(vilkov) */
-//	QIR_P(QIrGraphicsMirrorEffect);
-//
-//	// Transparent mirror: no reflection to draw.
-//	if ( p->isFullyTransparent ) {
-//		source->draw(painter);
-//        return;
-//	}
-//
-//	painter->save();
-//
-//	QPoint offset, refletOffset;
-//    if (source->isPixmap()) {
-//        // No point in drawing in device coordinates (pixmap will be scaled anyways).
-//		QRect srcBrect = source->boundingRect().toAlignedRect();
-//		QSize sz = srcBrect.size();
-//		offset = srcBrect.topLeft();
-//		refletOffset = offset;
-//
-//
-//		QPixmap pixmap(sz);
-//		pixmap.fill(Qt::transparent);
-//
-//		QPainter pixmapPainter(&pixmap);
-//		pixmapPainter.setRenderHints(painter->renderHints());
-//		pixmapPainter.translate(-offset);
-//		source->draw(&pixmapPainter);
-//		pixmapPainter.translate(-offset);
-//		pixmapPainter.end();
-//		painter->drawPixmap(offset, pixmap);
-//		QImage img = pixmap.toImage().mirrored(0,true);
-//		painter->setOpacity(p->opacity);
-//		painter->drawImage(refletOffset,img);
-//    } else {
-//        // Draw pixmap in device coordinates to avoid pixmap scaling;
-//		QTransform worldTransform = painter->worldTransform();
-//
-//		// Calculate source bounding rect in logical and device coordinates.
-//		QRectF srcBrect = source->boundingRect();
-//		QRect srcDeviceBrect = worldTransform.mapRect(srcBrect).toAlignedRect();
-//
+	QIR_P(QIrGraphicsMirrorEffect);
+
+	// Transparent mirror: no reflection to draw.
+	if ( p->isFullyTransparent ) {
+		drawSource(painter);
+        return;
+	}
+
+	painter->save();
+
+	QPoint offset, refletOffset;
+    if (sourceIsPixmap()) {
+        // No point in drawing in device coordinates (pixmap will be scaled anyways).
+		QRect srcBrect = sourceBoundingRect().toAlignedRect();
+		QSize sz = srcBrect.size();
+		offset = srcBrect.topLeft();
+		refletOffset = offset;
+
+
+		QPixmap pixmap(sz);
+		pixmap.fill(Qt::transparent);
+
+		QPainter pixmapPainter(&pixmap);
+		pixmapPainter.setRenderHints(painter->renderHints());
+		pixmapPainter.translate(-offset);
+		drawSource(&pixmapPainter);
+		pixmapPainter.translate(-offset);
+		pixmapPainter.end();
+		painter->drawPixmap(offset, pixmap);
+		QImage img = pixmap.toImage().mirrored(0,true);
+		painter->setOpacity(p->opacity);
+		painter->drawImage(refletOffset,img);
+    } else {
+        // Draw pixmap in device coordinates to avoid pixmap scaling;
+		QTransform worldTransform = painter->worldTransform();
+
+		// Calculate source bounding rect in logical and device coordinates.
+		QRectF srcBrect = sourceBoundingRect();
+		QRect srcDeviceBrect = worldTransform.mapRect(srcBrect).toAlignedRect();
+
+	    /* FIXME(vilkov) */
 //		srcDeviceBrect &= source->deviceRect();
-//		QSize sz = srcDeviceBrect.size();
-//		offset = srcDeviceBrect.topLeft();
-//		refletOffset = offset;
-//
-//		QPixmap pixmap = source->pixmap(Qt::DeviceCoordinates, &offset);
-//		QTransform restoreTransform = painter->worldTransform();
-//		painter->setWorldTransform(QTransform());
-//
-//		if ( p->useGray ) {
-//			QPainter pixmapPainter(&pixmap);
-//			p->grayFilter->draw(&pixmapPainter,QPoint(),pixmap);
-//			pixmapPainter.end();
-//		}
-//		painter->drawPixmap(offset,pixmap);
-//
-//		QImage img;
-//
-//		switch ( p->mirrorPosition ) {
-//			case OnBottom :
-//				img = pixmap.toImage().mirrored(0,true);
-//				refletOffset.ry() += -img.size().height() + 2 * sz.height();
-//				break;
-//			case OnTop :
-//				img = pixmap.toImage().mirrored(0,true);
-//				refletOffset.ry() += - sz.height();
-//				break;
-//			case OnLeft :
-//				img = pixmap.toImage().mirrored(true,0);
-//				refletOffset.rx() += -sz.width();
-//				break;
-//			default:
-//				img = pixmap.toImage().mirrored(true,0);
-//				refletOffset.rx() += -img.size().width() + 2 * sz.width();
-//				break;
-//		}
-//		painter->setOpacity(p->opacity);
-//		p->filter->draw(painter,refletOffset,QPixmap::fromImage(img));
-//		painter->setWorldTransform(restoreTransform);
-//     }
-//    painter->restore();
+		QSize sz = srcDeviceBrect.size();
+		offset = srcDeviceBrect.topLeft();
+		refletOffset = offset;
+
+		QPixmap pixmap = sourcePixmap(Qt::DeviceCoordinates, &offset);
+		QTransform restoreTransform = painter->worldTransform();
+		painter->setWorldTransform(QTransform());
+
+		if ( p->useGray ) {
+			QPainter pixmapPainter(&pixmap);
+			p->grayFilter->draw(&pixmapPainter,QPoint(),pixmap);
+			pixmapPainter.end();
+		}
+		painter->drawPixmap(offset,pixmap);
+
+		QImage img;
+
+		switch ( p->mirrorPosition ) {
+			case OnBottom :
+				img = pixmap.toImage().mirrored(0,true);
+				refletOffset.ry() += -img.size().height() + 2 * sz.height();
+				break;
+			case OnTop :
+				img = pixmap.toImage().mirrored(0,true);
+				refletOffset.ry() += - sz.height();
+				break;
+			case OnLeft :
+				img = pixmap.toImage().mirrored(true,0);
+				refletOffset.rx() += -sz.width();
+				break;
+			default:
+				img = pixmap.toImage().mirrored(true,0);
+				refletOffset.rx() += -img.size().width() + 2 * sz.width();
+				break;
+		}
+		painter->setOpacity(p->opacity);
+		p->filter->draw(painter,refletOffset,QPixmap::fromImage(img));
+		painter->setWorldTransform(restoreTransform);
+     }
+    painter->restore();
 }
 QIR_END_NAMESPACE
