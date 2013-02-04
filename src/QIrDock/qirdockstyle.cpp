@@ -27,9 +27,9 @@
 #include <QtDebug>
 #include <QObject>
 #include <QGraphicsEffect>
+#include <QtGui/private/qpixmapfilter_p.h>
 #include "qirdocklet.h"
 #include "qirgraphicsmirroreffect.h"
-#include "private/qpixmapfilter_p.h"
 #include "private/qirdockstyle_p.h"
 #include "qirdockletbundle.h"
 #include "qirdockview.h"

@@ -24,7 +24,7 @@
 #include "../Common/private/qirobject_p.h"
 #include <QPainter>
 #include "qirgraphicsmirroreffect.h"
-#include <private/qpixmapfilter_p.h>
+#include <QtGui/private/qpixmapfilter_p.h>
 #include <QtDebug>
 
 QIR_BEGIN_NAMESPACE
