@@ -1,1 +1,1 @@
-Clone of http://sourceforge.net/projects/qiron.
+QIron is a set of stunning and very customizable Qt-based widgets for creating professional user interface with ease (original version: http://sourceforge.net/projects/qiron).
